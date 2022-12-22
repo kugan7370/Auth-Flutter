@@ -15,11 +15,4 @@ appRoutes() => [
         transition: Transition.rightToLeftWithFade,
         transitionDuration: const Duration(milliseconds: 800),
       ),
-      // GetPage(
-      //   name: '/third',
-      //   page: () => ThirdPage(),
-      //   middlewares: [MyMiddelware()],
-      //   transition: Transition.leftToRightWithFade,
-      //   transitionDuration: Duration(milliseconds: 500),
-      // ),
     ];
