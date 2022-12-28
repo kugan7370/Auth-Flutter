@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/Features/Controllers/loginController.dart';
+import 'package:ecommerce_project/Features/Controllers/login_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 

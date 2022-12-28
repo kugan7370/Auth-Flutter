@@ -4,15 +4,8 @@ String uri = 'http://<yourip>:3000';
 
 class GlobalVariables {
   // COLORS
-  static const appBarGradient = LinearGradient(
-    colors: [
-      Color.fromARGB(255, 29, 201, 192),
-      Color.fromARGB(255, 125, 221, 216),
-    ],
-    stops: [0.5, 1.0],
-  );
 
-  static const secondaryColor = Color.fromRGBO(255, 153, 0, 1);
+  static const mainColor = Color(0xFF89dad0);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundCOlor = Color(0xffebecee);
   static var selectedNavBarColor = Colors.cyan[800]!;
@@ -20,6 +13,13 @@ class GlobalVariables {
 
   // STATIC IMAGES
   static const List<String> carouselImages = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvTg9ROHBHoDY9NU7Bq-0v4w6M9ey_HCa9Gw&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfpZB0_3qGRT0vx7Jlw662goIgQc9en4esg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrvrlpEKVYM0DyTa8Sr7OekGxlOKmYmgToug&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYV9NonR_MqceAOLqVkheAgGGaQAYNn2n7g&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWMCNs3267ukSJI-IKGD3L85GfEM0pq9kr9g&usqp=CAU',
+  ];
+  static const List<String> carouselImages2 = [
     'https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/WLA/TS/D37847648_Accessories_savingdays_Jan22_Cat_PC_1500.jpg',
     'https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg',
     'https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/AdvantagePrime/BAU/14thJan/D37196025_IN_WL_AdvantageJustforPrime_Jan_Mob_ingress-banner_1242x450.jpg',

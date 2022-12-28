@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/Features/Controllers/registerController.dart';
+import 'package:ecommerce_project/Features/Controllers/register_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,6 @@
-import 'package:ecommerce_project/Features/Screens/SignIn.dart';
-import 'package:ecommerce_project/Routes/appRoutes.dart';
+import 'package:ecommerce_project/Features/Screens/main_food_page.dart';
+import 'package:ecommerce_project/Features/Screens/signin.dart';
+import 'package:ecommerce_project/Routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -18,11 +19,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        initialRoute: '/signup',
+        // initialRoute: "/signin",
         getPages: appRoutes(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignInScreen());
+        home: const MainFoodScreen());
   }
 }
