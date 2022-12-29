@@ -7,7 +7,6 @@ class FeedbackWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
@@ -19,10 +18,12 @@ class FeedbackWidget extends StatelessWidget {
               )
           ],
         ),
+        SizedBox(width: 10),
         const SmaillText(
           text: "4.5",
           color: Color.fromARGB(255, 187, 185, 185),
         ),
+        SizedBox(width: 30),
         const SmaillText(
           text: "1,234 Comments",
           color: Color.fromARGB(255, 187, 185, 185),

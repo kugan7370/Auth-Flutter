@@ -1,5 +1,6 @@
+import 'package:ecommerce_project/Features/Screens/food_details_page.dart';
 import 'package:ecommerce_project/Features/Screens/main_food_page.dart';
-import 'package:ecommerce_project/Features/Screens/signin.dart';
+import 'package:ecommerce_project/Features/Widgets/recommended_food_details.dart';
 import 'package:ecommerce_project/Routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MainFoodScreen());
+        home: const FoodDetailsScreen());
   }
 }
