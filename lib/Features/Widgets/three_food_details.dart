@@ -1,55 +1,66 @@
 import 'package:ecommerce_project/Constant/global_colors.dart';
 import 'package:ecommerce_project/Features/Widgets/small_text_widget.dart';
+import 'package:ecommerce_project/controller/popular_product_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FoodDetailIcons extends StatelessWidget {
-  const FoodDetailIcons({super.key});
-
+  FoodDetailIcons({super.key, required this.productId});
+  int productId;
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[productId];
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
-          children: const [
-            Icon(
-              Icons.circle_sharp,
+          children: [
+            const Icon(
+              Icons.price_change,
+              /*circul sharp  */
               size: 12,
               color: Colors.orangeAccent,
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             SmaillText(
-              text: "Normal",
-              color: Color.fromARGB(255, 172, 169, 169),
+              text: '\$ ${product.price.toString()}',
+              color: const Color.fromARGB(255, 172, 169, 169),
             )
           ],
         ),
         Row(
-          children: const [
-            Icon(
-              Icons.location_on,
+          children: [
+            const Icon(
+              Icons.star_rate_sharp,
+              /*location_on */
               size: 12,
               color: GlobalVariables.mainColor,
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
-            SmaillText(text: "32km", color: Color.fromARGB(255, 172, 169, 169))
+            SmaillText(
+                text: product.rating.rate.toString(),
+                color: const Color.fromARGB(255, 172, 169, 169))
           ],
         ),
         Row(
-          children: const [
-            Icon(
-              Icons.access_time_rounded,
+          children: [
+            const Icon(
+              Icons.favorite_rounded,
+              /*accesstime_rounded  */
               size: 12,
               color: Colors.redAccent,
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
-            SmaillText(text: "32min", color: Color.fromARGB(255, 172, 169, 169))
+            SmaillText(
+                text: product.rating.count.toString(),
+                color: const Color.fromARGB(255, 172, 169, 169))
           ],
         ),
       ],

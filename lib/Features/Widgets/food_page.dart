@@ -103,49 +103,49 @@ class _FoodPageBuilderState extends State<FoodPageBuilder> {
                     ? Colors.lightBlueAccent
                     : const Color.fromARGB(255, 230, 154, 211),
                 image: DecorationImage(
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     image:
-                        NetworkImage(GlobalVariables.carouselImages[index]))),
+                        NetworkImage(GlobalVariables.carouselImages2[index]))),
           ),
 
 //shadow container-----------------
 
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
-              height: 140,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color(0xffe8e8e8),
-                      blurRadius: 1,
-                      offset: Offset(0, 5),
-                    ),
-                  ]),
-              child: Container(
-                padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      BigText(
-                        text: "Chines Food",
-                        color: Colors.black54,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      FeedbackWidget(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      FoodDetailIcons()
-                    ]),
-              ),
-            ),
-          ),
+          // Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: Container(
+          //     margin: const EdgeInsets.only(left: 40, right: 40, bottom: 20),
+          //     height: 140,
+          //     decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(20),
+          //         color: Colors.white,
+          //         boxShadow: const [
+          //           BoxShadow(
+          //             color: Color(0xffe8e8e8),
+          //             blurRadius: 1,
+          //             offset: Offset(0, 5),
+          //           ),
+          //         ]),
+          //     child: Container(
+          //       padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+          //       child: Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: const [
+          //             BigText(
+          //               text: "Chines Food",
+          //               color: Colors.black54,
+          //             ),
+          //             SizedBox(
+          //               height: 10,
+          //             ),
+          //             FeedbackWidget(),
+          //             SizedBox(
+          //               height: 20,
+          //             ),
+          //             FoodDetailIcons()
+          //           ]),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

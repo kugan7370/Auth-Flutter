@@ -3,13 +3,18 @@ import 'package:ecommerce_project/Features/Widgets/big_text_widgets.dart';
 import 'package:ecommerce_project/Features/Widgets/feedback_details.dart';
 import 'package:ecommerce_project/Features/Widgets/small_text_widget.dart';
 import 'package:ecommerce_project/Features/Widgets/three_food_details.dart';
+import 'package:ecommerce_project/controller/popular_product_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FoodDetailsScreen extends StatelessWidget {
-  const FoodDetailsScreen({super.key});
+  FoodDetailsScreen({super.key, required this.pageId});
+  int pageId;
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[pageId];
     return Scaffold(
       body: Stack(children: [
         Positioned(
@@ -21,8 +26,7 @@ class FoodDetailsScreen extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.blueAccent,
                 image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(GlobalVariables.carouselImages[0]))),
+                    fit: BoxFit.fill, image: NetworkImage(product.image))),
           ),
         ),
         Positioned(
@@ -32,13 +36,16 @@ class FoodDetailsScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                child: const Icon(Icons.arrow_back),
+              GestureDetector(
+                onTap: () => Get.back(),
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: const Icon(Icons.arrow_back),
+                ),
               ),
               Container(
                 height: 40,
@@ -66,23 +73,22 @@ class FoodDetailsScreen extends StatelessWidget {
             height: 300,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 BigText(
-                  text: "Briyani",
+                  text: product.title,
                   size: 24,
                 ),
                 SizedBox(height: 20),
                 FeedbackWidget(),
                 SizedBox(height: 20),
-                FoodDetailIcons(),
+                FoodDetailIcons(
+                  productId: pageId,
+                ),
                 SizedBox(height: 30),
                 BigText(text: "Introduce"),
                 Expanded(
                   child: SingleChildScrollView(
-                    child: SmaillText(
-                        height: 2,
-                        text:
-                            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. "),
+                    child: SmaillText(height: 2, text: product.description),
                   ),
                 ),
               ],
