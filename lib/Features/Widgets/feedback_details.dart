@@ -1,11 +1,16 @@
 import 'package:ecommerce_project/Features/Widgets/small_text_widget.dart';
+import 'package:ecommerce_project/controller/popular_product_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FeedbackWidget extends StatelessWidget {
-  const FeedbackWidget({super.key});
+  FeedbackWidget({super.key, required this.productId});
 
+  final int productId;
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[productId];
     return Row(
       children: [
         Row(
@@ -18,15 +23,15 @@ class FeedbackWidget extends StatelessWidget {
               )
           ],
         ),
-        SizedBox(width: 10),
-        const SmaillText(
-          text: "4.5",
-          color: Color.fromARGB(255, 187, 185, 185),
+        const SizedBox(width: 10),
+        SmaillText(
+          text: product.rating.toString(),
+          color: const Color.fromARGB(255, 187, 185, 185),
         ),
-        SizedBox(width: 30),
-        const SmaillText(
-          text: "1,234 Comments",
-          color: Color.fromARGB(255, 187, 185, 185),
+        const SizedBox(width: 30),
+        SmaillText(
+          text: product.reviews.toString(),
+          color: const Color.fromARGB(255, 187, 185, 185),
         ),
       ],
     );

@@ -26,7 +26,7 @@ class FoodDetailsScreen extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.blueAccent,
                 image: DecorationImage(
-                    fit: BoxFit.fill, image: NetworkImage(product.image))),
+                    fit: BoxFit.cover, image: NetworkImage(product.image))),
           ),
         ),
         Positioned(
@@ -75,11 +75,13 @@ class FoodDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BigText(
-                  text: product.title,
+                  text: product.name,
                   size: 24,
                 ),
                 SizedBox(height: 20),
-                FeedbackWidget(),
+                FeedbackWidget(
+                  productId: pageId,
+                ),
                 SizedBox(height: 20),
                 FoodDetailIcons(
                   productId: pageId,

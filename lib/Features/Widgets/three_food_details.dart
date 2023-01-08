@@ -34,7 +34,7 @@ class FoodDetailIcons extends StatelessWidget {
         Row(
           children: [
             const Icon(
-              Icons.star_rate_sharp,
+              Icons.circle_sharp,
               /*location_on */
               size: 12,
               color: GlobalVariables.mainColor,
@@ -43,15 +43,14 @@ class FoodDetailIcons extends StatelessWidget {
               width: 5,
             ),
             SmaillText(
-                text: product.rating.rate.toString(),
+                text: product.category,
                 color: const Color.fromARGB(255, 172, 169, 169))
           ],
         ),
         Row(
           children: [
             const Icon(
-              Icons.favorite_rounded,
-              /*accesstime_rounded  */
+              Icons.access_time_rounded,
               size: 12,
               color: Colors.redAccent,
             ),
@@ -59,7 +58,7 @@ class FoodDetailIcons extends StatelessWidget {
               width: 5,
             ),
             SmaillText(
-                text: product.rating.count.toString(),
+                text: "${product.deliveryTime.toString()} mins",
                 color: const Color.fromARGB(255, 172, 169, 169))
           ],
         ),

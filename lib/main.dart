@@ -11,7 +11,7 @@ import 'helpers/dependancies.dart' as dep;
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // initials the env
-  // await dotenv.load();
+  await dotenv.load();
 
   // initialize other dependancies
   await dep.init();

@@ -67,7 +67,7 @@ class _MainFoodScreenState extends State<MainFoodScreen> {
                   children: [
                     //pageBuilder------------------------------------------------------
 
-                    const FoodPageBuilder(),
+                    FoodPageBuilder(),
                     const SizedBox(
                       height: 20,
                     ),

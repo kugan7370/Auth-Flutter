@@ -31,7 +31,7 @@ class ListViewFood extends StatelessWidget {
                       color: Colors.blueAccent,
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                         image: NetworkImage(
                             popularProducts.popularProductList[index].image),
                       ),
@@ -54,7 +54,7 @@ class ListViewFood extends StatelessWidget {
                           children: [
                             BigText(
                               text: popularProducts
-                                  .popularProductList[index].title,
+                                  .popularProductList[index].name,
                               size: 18,
                             ),
                             SizedBox(height: 20),
