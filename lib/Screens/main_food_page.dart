@@ -1,9 +1,14 @@
 import 'package:ecommerce_project/Constant/global_colors.dart';
-import 'package:ecommerce_project/Features/Widgets/big_text_widgets.dart';
-import 'package:ecommerce_project/Features/Widgets/food_page.dart';
-import 'package:ecommerce_project/Features/Widgets/list_views.dart';
-import 'package:ecommerce_project/Features/Widgets/small_text_widget.dart';
+import 'package:ecommerce_project/Widgets/big_text_widgets.dart';
+import 'package:ecommerce_project/Widgets/food_page.dart';
+import 'package:ecommerce_project/Widgets/list_views.dart';
+import 'package:ecommerce_project/Widgets/small_text_widget.dart';
+import 'package:ecommerce_project/controller/all_food_controller.dart';
+import 'package:ecommerce_project/controller/cart_food_controller.dart';
+import 'package:ecommerce_project/controller/popular_product_controller.dart';
+import 'package:ecommerce_project/controller/trending_food_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainFoodScreen extends StatefulWidget {
   const MainFoodScreen({super.key});
@@ -15,6 +20,18 @@ class MainFoodScreen extends StatefulWidget {
 class _MainFoodScreenState extends State<MainFoodScreen> {
   @override
   Widget build(BuildContext context) {
+    //  call popular foods
+    Get.find<PopularProductController>().getPopularProductList();
+
+    //call trending foods
+    Get.find<TrendingFoodController>().getTrendingFoodList();
+
+    //call all foods
+    Get.find<AllFoodController>().getAllFoodList();
+
+    //call card
+    Get.find<CartController>();
+
     return Scaffold(
       body: SafeArea(
         child: Column(

@@ -1,8 +1,8 @@
 import 'package:ecommerce_project/Constant/global_colors.dart';
-import 'package:ecommerce_project/Features/Screens/food_details_page.dart';
-import 'package:ecommerce_project/Features/Widgets/big_text_widgets.dart';
-import 'package:ecommerce_project/Features/Widgets/small_text_widget.dart';
-import 'package:ecommerce_project/Features/Widgets/three_food_details.dart';
+import 'package:ecommerce_project/Screens/food_details_page.dart';
+import 'package:ecommerce_project/Widgets/big_text_widgets.dart';
+import 'package:ecommerce_project/Widgets/small_text_widget.dart';
+import 'package:ecommerce_project/Widgets/three_food_details.dart';
 import 'package:ecommerce_project/controller/popular_product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +19,8 @@ class ListViewFood extends StatelessWidget {
         itemCount: popularProducts.popularProductList.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () => Get.to(FoodDetailsScreen(pageId: index)),
+            onTap: () => Get.to(FoodDetailsScreen(
+                pageId: popularProducts.popularProductList[index].id)),
             child: Container(
               margin: const EdgeInsets.only(left: 20, bottom: 15),
               child: Row(
@@ -63,7 +64,8 @@ class ListViewFood extends StatelessWidget {
                                     .popularProductList[index].category),
                             SizedBox(height: 20),
                             FoodDetailIcons(
-                              productId: index,
+                              foodDetials:
+                                  popularProducts.popularProductList[index],
                             )
                           ]),
                     ),

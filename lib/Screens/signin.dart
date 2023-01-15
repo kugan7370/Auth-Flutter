@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/Features/Controllers/login_controller.dart';
+import 'package:ecommerce_project/controller/user_sign_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +25,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+//call sign controller
+    var signController = Get.find<UserSignInController>();
+
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -78,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 onPressed: () => {
                   if (_formKey.currentState!.validate())
                     {
-                      LoginController.login(
+                      signController.userSigIn(
                           email: _emailController.text,
                           password: _passwordController.text)
                     }

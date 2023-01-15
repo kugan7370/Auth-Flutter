@@ -1,10 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecommerce_project/Constant/global_colors.dart';
-import 'package:ecommerce_project/Features/Screens/food_details_page.dart';
-import 'package:ecommerce_project/Features/Widgets/big_text_widgets.dart';
-import 'package:ecommerce_project/Features/Widgets/feedback_details.dart';
-import 'package:ecommerce_project/Features/Widgets/three_food_details.dart';
+import 'package:ecommerce_project/Screens/food_details_page.dart';
+import 'package:ecommerce_project/Widgets/big_text_widgets.dart';
+import 'package:ecommerce_project/Widgets/feedback_details.dart';
+import 'package:ecommerce_project/Widgets/three_food_details.dart';
 import 'package:ecommerce_project/controller/popular_product_controller.dart';
+import 'package:ecommerce_project/controller/trending_food_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,7 +38,7 @@ class _FoodPageBuilderState extends State<FoodPageBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<PopularProductController>(
+    return GetBuilder<TrendingFoodController>(
       builder: (product) {
         return Column(
           children: [
@@ -45,15 +46,15 @@ class _FoodPageBuilderState extends State<FoodPageBuilder> {
               height: 320,
               child: PageView.builder(
                 controller: pageController,
-                itemCount: product.popularProductList.length,
+                itemCount: product.trendingFoodList.length,
                 itemBuilder: (context, index) {
                   return _buildPageItem(index, product);
                 },
               ),
             ),
             DotsIndicator(
-              dotsCount: product.popularProductList.length > 0
-                  ? product.popularProductList.length
+              dotsCount: product.trendingFoodList.length > 0
+                  ? product.trendingFoodList.length
                   : 1,
               position: _currentPageValue,
               decorator: DotsDecorator(
@@ -104,7 +105,8 @@ class _FoodPageBuilderState extends State<FoodPageBuilder> {
         child: Stack(
           children: [
             GestureDetector(
-              onTap: () => Get.to(FoodDetailsScreen(pageId: index)),
+              onTap: () => Get.to(FoodDetailsScreen(
+                  pageId: product.trendingFoodList[index].id)),
               child: Container(
                 margin: const EdgeInsets.only(left: 10, right: 10),
                 height: _height,
@@ -116,7 +118,7 @@ class _FoodPageBuilderState extends State<FoodPageBuilder> {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            product.popularProductList[index].image))),
+                            product.trendingFoodList[index].image))),
               ),
             ),
 
@@ -143,19 +145,19 @@ class _FoodPageBuilderState extends State<FoodPageBuilder> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         BigText(
-                          text: product.popularProductList[index].name,
+                          text: product.trendingFoodList[index].name,
                           color: Colors.black54,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        FeedbackWidget(productId: index),
+                        FeedbackWidget(
+                            foodDetials: product.trendingFoodList[index]),
                         const SizedBox(
                           height: 20,
                         ),
                         FoodDetailIcons(
-                          productId: index,
-                        )
+                            foodDetials: product.trendingFoodList[index])
                       ]),
                 ),
               ),

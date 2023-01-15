@@ -7,13 +7,14 @@ class UserSignInModel {
   String email;
   String password;
 
-  // factory UserSignInModel.fromJson(Map<String, dynamic> json) => UserSignInModel(
-  //     email: json["email"],
-  //     password: json["Password"],
-  // );
+  factory UserSignInModel.fromJson(Map<String, dynamic> json) =>
+      UserSignInModel(
+        email: json["email"],
+        password: json["password"],
+      );
 
   Map<String, dynamic> toJson() => {
         "email": email,
-        "Password": password,
+        "password": password,
       };
 }

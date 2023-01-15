@@ -1,30 +1,47 @@
+import 'dart:convert';
+
+import 'package:ecommerce_project/helpers/error_handling.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
-class ApiClient extends GetConnect implements GetxService {
+class ApiClient {
   // late String token;
-  final String appBaseUrl;
-  late String token;
-  late Map<String, String> _mainHeader;
 
-  ApiClient({required this.appBaseUrl}) {
-    baseUrl = appBaseUrl;
-    timeout = const Duration(seconds: 30);
-    token = "";
-    _mainHeader = {
-      // 'X-RapidAPI-Key': 'c44d18a2c3msh04f6658bb80135cp1dca78jsn8fb99c6385a3',
-      // 'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
-    };
+  final http.Client client = http.Client();
+
+  //create header
+
+  // dotenv.env
+  static Uri buildUrl(String endpoint) {
+    String host = dotenv.get('APP_HOST');
+    final apiPath = host + endpoint;
+    return Uri.parse(apiPath);
   }
 
-  Future<Response> getData(String uri) async {
-    print("uri: $uri");
+  Future getData(String uri) async {
     try {
-      /* 1.Response coming from getx
-         2.get methods is coming from getx  so not need to put baseUrl+uri; because it internally will be added
-      */
-      Response response = await get(uri);
-      print("response: ${response}");
-      return response;
+      http.Response response = await client.get(buildUrl(uri));
+      var result = await httpErrorHandling(response: response);
+      if (result != null) {
+        return result;
+      }
+    } catch (e) {
+      return Response(statusCode: 1, statusText: e.toString());
+    }
+  }
+
+  Future postData(String uri, data) async {
+    try {
+      http.Response response =
+          await client.post(buildUrl(uri), body: json.encode(data), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        // "Authorization": 'Bearer $token'
+      });
+      var result = await httpErrorHandling(response: response);
+      if (result != null) {
+        return result;
+      }
     } catch (e) {
       return Response(statusCode: 1, statusText: e.toString());
     }

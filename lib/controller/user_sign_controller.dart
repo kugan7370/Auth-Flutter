@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecommerce_project/data/repository/Popular_repo.dart';
 import 'package:ecommerce_project/data/repository/user_sign_repo.dart';
 import 'package:ecommerce_project/model/popular_product_model.dart';
@@ -13,18 +15,20 @@ class UserSignInController extends GetxController {
 // intialize the contructor
   UserSignInController({required this.userSignInRepo});
 
-// this is private variable
-
-// to access the data we are using this method
-
   Future<void> userSigIn({email, password}) async {
-    Response response = await userSignInRepo.userSignin();
-    print(response.body);
-    if (response.statusCode == 200) {
-      var userData = UserSignInModel(email: email, password: password);
+    UserSignInModel userSignInModel =
+        UserSignInModel(email: email, password: password);
 
-      //to  get real time data
-      update();
+    var response = await userSignInRepo.userSignin(userSignInModel);
+    if (response != null) {
+      var data = json.decode(response);
+//navigate to home screen
+
+      print(data);
+      Get.snackbar('Success', 'User login Successfully',
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: const Color.fromARGB(255, 3, 150, 15));
+      Get.offAllNamed('/home');
     }
   }
 }

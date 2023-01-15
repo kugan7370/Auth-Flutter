@@ -1,8 +1,11 @@
-import 'package:ecommerce_project/Features/Screens/food_details_page.dart';
-import 'package:ecommerce_project/Features/Screens/main_food_page.dart';
-import 'package:ecommerce_project/Features/Widgets/recommended_food_details.dart';
+import 'package:ecommerce_project/Screens/food_details_page.dart';
+import 'package:ecommerce_project/Screens/main_food_page.dart';
+import 'package:ecommerce_project/Screens/signin.dart';
+import 'package:ecommerce_project/Widgets/recommended_food_details.dart';
 import 'package:ecommerce_project/Routes/app_routes.dart';
+import 'package:ecommerce_project/controller/all_food_controller.dart';
 import 'package:ecommerce_project/controller/popular_product_controller.dart';
+import 'package:ecommerce_project/controller/trending_food_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -24,8 +27,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
-
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
@@ -34,6 +35,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MainFoodScreen());
+        home: const SignInScreen());
   }
 }

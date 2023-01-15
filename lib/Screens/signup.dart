@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/Features/Controllers/register_controller.dart';
+import 'package:ecommerce_project/controller/user_sign_up_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +32,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+//call signup controller
+    var signupController = Get.find<UserSignUpController>();
+
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -119,7 +122,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    RegisterController.register(
+                    signupController.userSignUp(
                         email: _emailController.text,
                         password: _passwordController.text,
                         confirmPassword: _confirmPasswordController.text,

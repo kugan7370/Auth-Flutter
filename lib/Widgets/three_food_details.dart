@@ -1,16 +1,16 @@
 import 'package:ecommerce_project/Constant/global_colors.dart';
-import 'package:ecommerce_project/Features/Widgets/small_text_widget.dart';
+import 'package:ecommerce_project/Widgets/small_text_widget.dart';
 import 'package:ecommerce_project/controller/popular_product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FoodDetailIcons extends StatelessWidget {
-  FoodDetailIcons({super.key, required this.productId});
-  int productId;
+  FoodDetailIcons({super.key, required this.foodDetials});
+  final foodDetials;
   @override
   Widget build(BuildContext context) {
-    var product =
-        Get.find<PopularProductController>().popularProductList[productId];
+    // var product =
+    //     Get.find<PopularProductController>().popularProductList[productId];
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -26,7 +26,7 @@ class FoodDetailIcons extends StatelessWidget {
               width: 5,
             ),
             SmaillText(
-              text: '\$ ${product.price.toString()}',
+              text: '\$ ${foodDetials.price.toString()}',
               color: const Color.fromARGB(255, 172, 169, 169),
             )
           ],
@@ -43,7 +43,7 @@ class FoodDetailIcons extends StatelessWidget {
               width: 5,
             ),
             SmaillText(
-                text: product.category,
+                text: foodDetials.category,
                 color: const Color.fromARGB(255, 172, 169, 169))
           ],
         ),
@@ -58,7 +58,7 @@ class FoodDetailIcons extends StatelessWidget {
               width: 5,
             ),
             SmaillText(
-                text: "${product.deliveryTime.toString()} mins",
+                text: "${foodDetials.deliveryTime.toString()} mins",
                 color: const Color.fromARGB(255, 172, 169, 169))
           ],
         ),

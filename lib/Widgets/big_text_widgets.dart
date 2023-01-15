@@ -17,11 +17,12 @@ class BigText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-          fontFamily: "Poppins",
-          color: color,
-          overflow: overflow,
-          fontSize: size,
-          fontWeight: FontWeight.w500),
+        fontFamily: "Poppins",
+        color: color,
+        overflow: overflow,
+        fontSize: size,
+        fontWeight: FontWeight.w500,
+      ),
     );
   }
 }
