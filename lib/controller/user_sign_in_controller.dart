@@ -7,6 +7,7 @@ import 'package:ecommerce_project/model/product_model.dart';
 import 'package:ecommerce_project/model/user_signin_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserSignInController extends GetxController {
 // create intance for PopularProductRepo class
@@ -22,12 +23,17 @@ class UserSignInController extends GetxController {
     var response = await userSignInRepo.userSignin(userSignInModel);
     if (response != null) {
       var data = json.decode(response);
-//navigate to home screen
 
-      print(data);
+      //store token locally
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString("token", data["token"]);
+
+      //alert
       Get.snackbar('Success', 'User login Successfully',
           snackPosition: SnackPosition.TOP,
           backgroundColor: const Color.fromARGB(255, 3, 150, 15));
+
+      //navigate to home page
       Get.offAllNamed('/home');
     }
   }
