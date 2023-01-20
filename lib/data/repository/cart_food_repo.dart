@@ -6,7 +6,7 @@ class CartRepo {
   final ApiClient apiClient;
   CartRepo({required this.apiClient});
 
-  Future getAllProductList() async {
+  Future getAllCartList() async {
     return await apiClient.getData("/api/cart/get-cart-items");
   }
 

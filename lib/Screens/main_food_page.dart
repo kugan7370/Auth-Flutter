@@ -10,6 +10,8 @@ import 'package:ecommerce_project/controller/trending_food_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../helpers/get_token.dart';
+
 class MainFoodScreen extends StatefulWidget {
   const MainFoodScreen({super.key});
 
@@ -30,7 +32,14 @@ class _MainFoodScreenState extends State<MainFoodScreen> {
     Get.find<AllFoodController>().getAllFoodList();
 
     //call card
-    Get.find<CartController>();
+    Get.find<CartController>().getAllCartList();
+
+// /signin
+
+    void clearToken() async {
+      await removeToken();
+      Get.offAllNamed("/signin");
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -63,7 +72,7 @@ class _MainFoodScreenState extends State<MainFoodScreen> {
                           borderRadius: BorderRadius.circular(15),
                           color: GlobalVariables.mainColor),
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: clearToken,
                           icon: const Icon(
                             Icons.search,
                             size: 25,

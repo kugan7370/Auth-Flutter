@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ecommerce_project/helpers/error_handling.dart';
+import 'package:ecommerce_project/helpers/get_token.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -20,8 +21,12 @@ class ApiClient {
   }
 
   Future getData(String uri) async {
+    var token = await getToken();
     try {
-      http.Response response = await client.get(buildUrl(uri));
+      http.Response response = await client.get(buildUrl(uri), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        "Authorization": 'Bearer $token'
+      });
       var result = await httpErrorHandling(response: response);
       if (result != null) {
         return result;
@@ -32,11 +37,13 @@ class ApiClient {
   }
 
   Future postData(String uri, data) async {
+    var token = await getToken();
+    print(token);
     try {
       http.Response response =
           await client.post(buildUrl(uri), body: json.encode(data), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
-        // "Authorization": 'Bearer $token'
+        "Authorization": 'Bearer $token'
       });
       var result = await httpErrorHandling(response: response);
       if (result != null) {

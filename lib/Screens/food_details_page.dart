@@ -25,6 +25,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
 
     setState(() {
       Get.find<PopularProductController>().initQuantity();
+      Get.find<CartController>().getAllCartList();
     });
   }
 
@@ -86,8 +87,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
         Positioned(
             top: 40,
             right: 15,
-            child: GetBuilder<PopularProductController>(
-                builder: (popularProductController) {
+            child: GetBuilder<CartController>(builder: (cartController) {
               return Container(
                   height: 20,
                   width: 20,
@@ -96,7 +96,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                       borderRadius: BorderRadius.circular(20)),
                   child: Center(
                     child: Text(
-                      popularProductController.getTotalQuantity().toString(),
+                      cartController.cartList.length.toString(),
                       style: TextStyle(color: Colors.white, fontSize: 10),
                     ),
                   ));

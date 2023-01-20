@@ -6,29 +6,28 @@ CartModel? cartModelFromJson(String str) =>
 String cartModelToJson(CartModel? data) => json.encode(data!.toJson());
 
 class CartModel {
-  CartModel({
-    required this.userId,
-    required this.foodId,
-    required this.name,
-    required this.quantity,
-    required this.price,
-    required this.image,
-  });
+  CartModel(
+      {required this.foodId,
+      required this.name,
+      required this.quantity,
+      required this.price,
+      required this.image,
+      this.totalPrice});
 
   String foodId;
   String name;
   int quantity;
   double price;
   String image;
-  String userId;
+  double? totalPrice;
 
   factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
         foodId: json["foodId"],
         name: json["name"],
         quantity: json["quantity"],
-        price: json["price"],
+        price: json["price"].toDouble(),
         image: json["image"],
-        userId: json["userId"],
+        totalPrice: json["totalPrice"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +36,6 @@ class CartModel {
         "quantity": quantity,
         "price": price,
         "image": image,
-        "userId": userId,
+        "totalPrice": totalPrice,
       };
 }
